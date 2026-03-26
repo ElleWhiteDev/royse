@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royse Locks & Hardware — Proud to be your Locksmith</title>
+  <meta name="description" content="Royse Locks & Hardware — Family owned locksmith serving Clark County and communities east of Lexington. Residential, commercial, automotive, and hardware restoration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&family=Pacifico&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Design Tokens ──────────────────────────────────────── */
+    :root {
+      --black:   #000000;
+      --white:   #ffffff;
+      --grey:    #545454;
+      --grey-lt: #d0d0d0;
+      --grey-bg: #f4f4f4;
+
+      --font-display: 'Pacifico', cursive;
+      --font-body:    'National Park', sans-serif;
+
+      --max-w: 1080px;
+      --pad-x: clamp(1.5rem, 5vw, 4rem);
+      --pad-section: clamp(4rem, 8vw, 7rem);
+    }
+
+    /* ─── Base ───────────────────────────────────────────────── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--black);
+      background: var(--white);
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem var(--pad-x);
+      border-bottom: 1px solid #222;
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--grey-lt);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem var(--pad-x) 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grain overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* Decorative horizontal rule lines */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--grey) 20%, var(--grey) 80%, transparent);
+      opacity: 0.4;
+    }
+
+    .hero-logo {
+      width: clamp(130px, 22vw, 200px);
+      height: auto;
+      margin-bottom: 2rem;
+      filter: brightness(1) drop-shadow(0 0 30px rgba(255,255,255,0.08));
+      animation: logoFade 1s ease both;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+      animation: slideUp 0.9s ease 0.15s both;
+    }
+
+    .hero-amp {
+      color: var(--grey);
+    }
+
+    .hero-slogan {
+      margin-top: 1rem;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey-lt);
+      animation: slideUp 0.9s ease 0.3s both;
+    }
+
+    .hero-divider {
+      margin: 2rem auto;
+      width: 60px;
+      height: 1px;
+      background: var(--grey);
+      animation: expand 0.9s ease 0.45s both;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid var(--grey);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+      animation: slideUp 0.9s ease 0.65s both;
+    }
+
+    .hero-cta:hover {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    /* ─── Section Wrapper ────────────────────────────────────── */
+    .section {
+      padding: var(--pad-section) var(--pad-x);
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 3rem;
+    }
+
+    /* ─── Services Section ───────────────────────────────────── */
+    #services {
+      background: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* Left column */
+    .services-list-heading {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+    }
+
+    .services-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .services-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .services-list li::before {
+      content: '—';
+      color: var(--grey);
+      flex-shrink: 0;
+      margin-top: 0.05em;
+      font-weight: 400;
+    }
+
+    /* Right column */
+    .services-divider {
+      width: 1px;
+      background: var(--grey-lt);
+      align-self: stretch;
+      display: none;
+    }
+
+    .services-copy {
+      font-size: 1.02rem;
+      color: var(--grey);
+      line-height: 1.85;
+      font-weight: 400;
+    }
+
+    .services-copy strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    /* ─── Contact Section ────────────────────────────────────── */
+    #contact {
+      background: var(--grey-bg);
+    }
+
+    .contact-inner {
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-body {
+      font-size: 1.05rem;
+      color: var(--grey);
+      margin-bottom: 2.2rem;
+      line-height: 1.8;
+    }
+
+    .contact-body a {
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    .contact-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      padding: 1rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: background 0.22s, transform 0.18s;
+    }
+
+    .contact-email-link:hover {
+      background: var(--grey);
+      transform: translateY(-2px);
+    }
+
+    .contact-email-link svg {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      padding: 3rem var(--pad-x);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 56px;
+      height: auto;
+      mix-blend-mode: screen;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+
+    .footer-meta {
+      font-size: 0.75rem;
+      color: var(--grey);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    /* ─── Animations ─────────────────────────────────────────── */
+    @keyframes logoFade {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes expand {
+      from { transform: scaleX(0); opacity: 0; }
+      to   { transform: scaleX(1); opacity: 1; }
+    }
+
+    /* Scroll fade-in for sections */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .nav-links { gap: 1.4rem; }
+      .nav-brand { font-size: 1rem; }
+
+      .footer-links { gap: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links li:not(:last-child) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Nav ─────────────────────────────────────────────────── -->
+  <nav>
+    <a class="nav-brand" href="#">Royse Locks</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ─────────────────────────────────────────────────── -->
+  <section class="hero">
+    <img class="hero-logo" src="royse.png" alt="Royse Locks & Hardware logo" />
+    <h1 class="hero-title">Royse Locks <span class="hero-amp">&amp;</span> Hardware</h1>
+    <p class="hero-slogan">Proud to be your Locksmith</p>
+    <a class="hero-cta" href="#contact">Book a Service</a>
+  </section>
+
+  <!-- ─── Services ─────────────────────────────────────────────── -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="fade-in">
+        <h2 class="section-title">Services</h2>
+      </div>
+      <div class="services-grid fade-in">
+
+        <!-- Left: Service List -->
+        <div>
+          <p class="services-list-heading">Services Include</p>
+          <ul class="services-list">
+            <li>Residential</li>
+            <li>Commercial</li>
+            <li>Automobile</li>
+            <li>Hardware Restoration &amp; Preservation</li>
+            <li>Installation</li>
+            <li>Custom Work</li>
+          </ul>
+        </div>
+
+        <!-- Right: About copy -->
+        <div>
+          <p class="services-copy">
+            Here at <strong>Royse Locks &amp; Hardware</strong>, we are happy to serve our customers with respect.
+            Whether it's quickly opening a locked car door, restoring historic hardware, or rekeying a whole
+            apartment building, our goal is to keep you <strong>safe, secure, and protected</strong>.
+          </p>
+          <br />
+          <p class="services-copy">
+            Based in <strong>Clark County</strong>, Royse Lock &amp; Hardware is one of the only family owned
+            locksmith businesses serving communities east of Lexington. We promise honest communication,
+            fair pricing, and a commitment to the safety and security of every customer.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ───────────────────────────────────────────────── -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-inner fade-in">
+        <h2 class="section-title">Contact</h2>
+        <p class="contact-body">
+          To book a service, please email clay@royselocks.com today!
+        </p>
+        <a class="contact-email-link" href="mailto:clay@royselocks.com">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          clay@royselocks.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────────────────────────── -->
+  <footer>
+    <img class="footer-logo" src="royse.png" alt="Royse Locks logo" />
+    <p class="footer-brand">Royse Locks &amp; Hardware</p>
+    <p class="footer-meta">Proud to be your Locksmith</p>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-meta" style="margin-top:0.5rem;">&copy; 2026 Royse Locks &amp; Hardware · Clark County, KY</p>
+  </footer>
+
+  <!-- ─── Scroll Animations ─────────────────────────────────────── -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
