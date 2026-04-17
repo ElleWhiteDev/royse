@@ -248,6 +248,64 @@
       border-color: var(--white);
     }
 
+    /* ─── Messaging Icons ────────────────────────────────────── */
+    .msg-icons {
+      display: flex;
+      gap: 1.1rem;
+      margin-top: 2rem;
+      animation: slideUp 0.9s ease 0.8s both;
+    }
+
+    .msg-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50%;
+      text-decoration: none;
+      color: var(--grey-lt);
+      font-size: 1.3rem;
+      line-height: 1;
+      transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .msg-icon .lc { display: inline; font-family: var(--font-body); }
+    .msg-icon .uc { display: none; font-family: var(--font-display); }
+
+    .msg-icon:hover {
+      border-color: var(--white);
+      color: var(--black);
+      background: var(--white);
+      transform: translateY(-3px);
+    }
+
+    .msg-icon:hover .lc { display: none; }
+    .msg-icon:hover .uc { display: inline; }
+
+    .msg-icon-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .msg-icon-name {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      transition: color 0.25s;
+    }
+
+    .msg-icon-wrap:hover .msg-icon-name {
+      color: rgba(255,255,255,0.7);
+    }
+
     /* ─── Section Wrapper ────────────────────────────────────── */
     .section {
       padding: var(--pad-section) var(--pad-x);
@@ -486,7 +544,44 @@
     <img class="hero-logo" src="royse.png" alt="Royse Lock & Hardware logo" />
     <!-- <h1 class="hero-title">Lock <span class="hero-amp">&amp; Hardware</h1> -->
     <p class="hero-slogan">Proud to be your Locksmith</p>
-    <a class="hero-cta" href="#contact">Request Service</a>
+    <a class="hero-cta" href="tel:18593340546">Request Service</a>
+    <div class="msg-icons">
+      <!-- Signal -->
+      <div class="msg-icon-wrap">
+        <a class="msg-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="Signal">
+          <span class="lc">s</span><span class="uc">S</span>
+        </a>
+        <span class="msg-icon-name">Signal</span>
+      </div>
+      <!-- Telegram -->
+      <div class="msg-icon-wrap">
+        <a class="msg-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <span class="lc">t</span><span class="uc">T</span>
+        </a>
+        <span class="msg-icon-name">Telegram</span>
+      </div>
+      <!-- WeChat -->
+      <div class="msg-icon-wrap">
+        <a class="msg-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="WeChat">
+          <span class="lc">w</span><span class="uc">W</span>
+        </a>
+        <span class="msg-icon-name">WeChat</span>
+      </div>
+      <!-- WhatsApp -->
+      <div class="msg-icon-wrap">
+        <a class="msg-icon" href="https://wa.me/18593340546" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <span class="lc">w</span><span class="uc">W</span>
+        </a>
+        <span class="msg-icon-name">WhatsApp</span>
+      </div>
+      <!-- Instagram -->
+      <div class="msg-icon-wrap">
+        <a class="msg-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <span class="lc">i</span><span class="uc">I</span>
+        </a>
+        <span class="msg-icon-name">Instagram</span>
+      </div>
+    </div>
   </section>
 
   <!-- ─── Services ─────────────────────────────────────────────── -->
@@ -536,9 +631,6 @@
     <div class="container">
       <div class="contact-inner fade-in">
         <h2 class="section-title">Contact</h2>
-        <p class="contact-body">
-          To book a service, please email clay@royselocks.com today!
-        </p>
         <a class="contact-email-link" href="mailto:clay@royselocks.com">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
