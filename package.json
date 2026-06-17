@@ -1,15 +1,15 @@
 {
-  "name": "royse-locks",
-  "version": "1.0.0",
-  "description": "Royse Locks & Hardware static site",
-  "scripts": {
-    "start": "serve -p $PORT ."
-  },
-  "dependencies": {
-    "serve": "^14.2.4"
-  },
-  "engines": {
-    "node": "20.x"
-  }
+	"name": "royse-locks",
+	"version": "1.0.0",
+	"description": "Royse Locks & Hardware static site",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"express": "^5.2.1",
+		"serve": "^14.2.4"
+	},
+	"engines": {
+		"node": "20.x"
+	}
 }
-

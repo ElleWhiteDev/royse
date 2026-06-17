@@ -160,9 +160,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: center;
-      padding: 8rem var(--pad-x) 5rem;
+      padding: 8rem var(--pad-x) 2.5rem;
       position: relative;
       overflow: hidden;
     }
@@ -189,11 +189,33 @@
     }
 
     .hero-logo {
-      width: clamp(220px, 38vw, 420px);
-      height: auto;
+      margin-top: auto;
       margin-bottom: 2.5rem;
-      filter: invert(1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
       animation: logoFade 1s ease both;
+    }
+
+    .hero-logo-mark,
+    .hero-logo-text {
+      width: clamp(220px, 38vw, 420px);
+      background: url("royse.png") no-repeat center;
+      background-size: 100% auto;
+      filter: invert(1);
+    }
+
+    /* Top piece: the key + "Royse" mark (rows 0–312 of the 498×501 source) */
+    .hero-logo-mark {
+      aspect-ratio: 498 / 312;
+      background-position: center top;
+    }
+
+    /* Bottom piece: "Lock & Hardware" + phone number (rows 312–501) */
+    .hero-logo-text {
+      aspect-ratio: 498 / 189;
+      background-position: center bottom;
     }
 
     .hero-title {
@@ -210,7 +232,7 @@
     }
 
     .hero-slogan {
-      margin-top: 1rem;
+      margin-top: 0;
       font-size: clamp(1rem, 2.2vw, 1.4rem);
       font-weight: 500;
       letter-spacing: 0.22em;
@@ -541,7 +563,10 @@
 
   <!-- ─── Hero ─────────────────────────────────────────────────── -->
   <section class="hero">
-    <img class="hero-logo" src="royse.png" alt="Royse Lock & Hardware logo" />
+    <div class="hero-logo">
+      <span class="hero-logo-mark" role="img" aria-label="Royse logo"></span>
+      <span class="hero-logo-text" role="img" aria-label="Lock & Hardware — 859-334-0546"></span>
+    </div>
     <!-- <h1 class="hero-title">Lock <span class="hero-amp">&amp; Hardware</h1> -->
     <p class="hero-slogan">Proud to be your Locksmith</p>
     <a class="hero-cta" href="tel:18593340546">Request Service</a>
