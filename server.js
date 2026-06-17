@@ -5,7 +5,10 @@ const app = express();
 // Redirect HTTP to HTTPS
 app.use((req, res, next) => {
   if (req.headers['x-forwarded-proto'] !== 'https') {
-    return res.redirect(301, 'https://' + req.headers.host + req.url);
+    return res.redirect(301, 'https://www.royselocks.com' + req.url);
+  }
+  if (req.headers.host === 'royselocks.com') {
+    return res.redirect(301, 'https://www.royselocks.com' + req.url);
   }
   next();
 });
